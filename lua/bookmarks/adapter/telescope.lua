@@ -1,5 +1,6 @@
 local api = require("bookmarks.api")
 local picker = require("bookmarks.adapter.picker")
+local actions = require("bookmarks.adaptor.action")
 
 ---@param opts? table
 local goto_bookmark = function(opts)
@@ -8,6 +9,9 @@ local goto_bookmark = function(opts)
   end)
 end
 
+
+
 return {
   goto_bookmark = goto_bookmark,
+  action = actions,
 }

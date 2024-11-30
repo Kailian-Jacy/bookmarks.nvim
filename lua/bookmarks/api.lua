@@ -84,13 +84,6 @@ local function goto_bookmark(bookmark, opts)
   local projects = repo.project.findall()
   local fullpath = domain.bookmark.fullpath(bookmark, projects)
 
-  local curren_bufnr = vim.api.nvim_get_current_buf()
-  -- check if the buffer have unsaved changes
-  if vim.api.nvim_buf_get_option(curren_bufnr, "modified") then
-    utils.log("Please save the current buffer before goto bookmark", vim.log.levels.WARN)
-    return
-  end
-
   vim.api.nvim_exec2(open_method .. " " .. fullpath, {})
 
   pcall(vim.api.nvim_win_set_cursor, 0, { bookmark.location.line, bookmark.location.col })
